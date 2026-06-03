@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IIR NLP Trading Terminal - Dashboard</title>
+    <style>
+        body {
+            background-color: #111111;
+            color: #ffffff;
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        h2 {
+            margin-bottom: 5px;
+            color: #gold;
+            font-weight: 300;
+            letter-spacing: 1px;
+        }
+        .subtitle {
+            color: #888888;
+            font-size: 14px;
+            margin-bottom: 25px;
+        }
+        .selector-container {
+            background-color: #1e1e1e;
+            padding: 15px 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        label {
+            font-size: 16px;
+            font-weight: bold;
+            color: #e0e0e0;
+        }
+        select {
+            background-color: #2a2a2a;
+            color: #ffffff;
+            border: 1px solid #444444;
+            padding: 8px 15px;
+            font-size: 16px;
+            border-radius: 4px;
+            cursor: pointer;
+            outline: none;
+            transition: border-color 0.3s;
+        }
+        select:hover {
+            border-color: #ff9900;
+        }
+        .chart-container {
+            width: 95%;
+            max-width: 1400px;
+            height: 820px;
+            background-color: #1e1e1e;
+            border-radius: 8px;
+            box-shadow: 0 4px 25px rgba(0,0,0,0.7);
+            overflow: hidden;
+        }
+        iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+    </style>
+</head>
+<body>
+
+    <h2>ІНВЕСТИЦІЙНИЙ НОВИННИЙ NLP-ТЕРМІНАЛ</h2>
+    <div class="subtitle">Аналітичний модуль тестування гібридних стратегій на основі розпізнавання природної мови</div>
+
+    <div class="selector-container">
+        <label for="ticker-slicer">Оберіть актив для аналізу (Слайсер):</label>
+        <select id="ticker-slicer" onchange="changeChart(this.value)">
+            <option value="DELL_fundamental_chart.html">DELL (Dell Technologies)</option>
+            <option value="AMD_fundamental_chart.html">AMD (Advanced Micro Devices)</option>
+            <option value="NVDA_fundamental_chart.html">NVDA (NVIDIA Corp)</option>
+            <option value="TSLA_fundamental_chart.html">TSLA (Tesla Inc)</option>
+            <option value="ALB_fundamental_chart.html">ALB (Albemarle Corp)</option>
+        </select>
+    </div>
+
+    <div class="chart-container">
+        <iframe id="chart-frame" src="DELL_fundamental_chart.html"></iframe>
+    </div>
+
+    <script>
+        function changeChart(chartPath) {
+            document.getElementById('chart-frame').src = chartPath;
+        }
+    </script>
+
+</body>
+</html>
